@@ -150,3 +150,7 @@ static/
 yatube_api/posts/static/
 media/
 
+# неиспользуемые файлы
+yatube_api/api/tests.py
+yatube_api/api/models.py
+yatube_api/api/admin.py
