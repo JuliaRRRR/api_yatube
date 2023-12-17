@@ -1,6 +1,6 @@
 """Set of serializers for the API."""
 from rest_framework import serializers
-from rest_framework.relations import SlugRelatedField, PrimaryKeyRelatedField
+from rest_framework.relations import SlugRelatedField
 
 from posts.models import Comment, Group, Post
 
@@ -11,13 +11,13 @@ class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(
         slug_field='username',
         read_only=True,
-        default=serializers.CurrentUserDefault()
     )
 
     class Meta:
         """Have no idea what to describe here."""
 
-        fields = '__all__'
+        fields = ('id', 'text', 'pub_date', 'image', 'group', 'author')
+        read_only_fields = ('id', 'pub_date', 'group', 'author')
         model = Post
 
 
@@ -28,12 +28,12 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='username'
     )
-    post = PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         """Have no idea what to describe here."""
 
-        fields = '__all__'
+        fields = ('id', 'author', 'post', 'text', 'created')
+        read_only_fields = ('post', 'created', 'author', 'id')
         model = Comment
 
 
@@ -43,5 +43,5 @@ class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         """Have no idea what to describe here."""
 
-        fields = '__all__'
+        fields = ('id', 'title', 'slug', 'description')
         model = Group

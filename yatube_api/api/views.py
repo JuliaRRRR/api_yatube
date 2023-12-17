@@ -46,4 +46,4 @@ class CommentViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         """Save request user object as comment author."""
-        serializer.save(author=self.request.user, post_id=self.get_post().id)
+        serializer.save(author=self.request.user, post=self.get_post())

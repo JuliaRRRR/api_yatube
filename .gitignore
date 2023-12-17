@@ -154,5 +154,7 @@ media/
 yatube_api/api/tests.py
 yatube_api/api/models.py
 yatube_api/api/admin.py
+yatube_api/api/models.py
+yatube_api/api/migrations/
 yatube_api/posts/views.py
 yatube_api/posts/urls.py
