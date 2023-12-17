@@ -17,7 +17,6 @@ class PostSerializer(serializers.ModelSerializer):
         """Have no idea what to describe here."""
 
         fields = ('id', 'text', 'pub_date', 'image', 'group', 'author')
-        read_only_fields = ('id', 'pub_date', 'group', 'author')
         model = Post
 
 
@@ -33,7 +32,7 @@ class CommentSerializer(serializers.ModelSerializer):
         """Have no idea what to describe here."""
 
         fields = ('id', 'author', 'post', 'text', 'created')
-        read_only_fields = ('post', 'created', 'author', 'id')
+        read_only_fields = ('post',)
         model = Comment
 
 
